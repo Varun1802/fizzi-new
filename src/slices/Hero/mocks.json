@@ -1,0 +1,99 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Further"
+						}
+					}
+				]
+			},
+			"subheading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nostrud incididunt est anim adipisicing commodo ad irure ut sint. Commodo aute qui ut esse nulla sit ex quis amet culpa sunt occaecat et."
+						}
+					}
+				]
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Cupidatat nisi ullamco fugiat commodo ullamco sint sit occaecat ut adipisicing velit ad consectetur."
+						}
+					}
+				]
+			},
+			"button_text": {
+				"__TYPE__": "FieldContent",
+				"value": "each",
+				"type": "Text"
+			},
+			"button_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com"
+				}
+			},
+			"cans_image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea",
+					"width": 3500,
+					"height": 2338
+				},
+				"url": "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea",
+				"width": 3500,
+				"height": 2338,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"second_heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Opinion"
+						}
+					}
+				]
+			},
+			"second_body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Adipisicing id reprehenderit non ut nostrud occaecat ex aliqua mollit laboris velit commodo ea sunt anim. Quis nulla incididunt velit aliqua duis laboris. Consectetur minim veniam commodo fugiat id ut ipsum quis non officia consequat eiusmod."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
