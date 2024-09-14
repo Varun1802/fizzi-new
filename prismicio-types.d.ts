@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type PageDocumentDataSlicesSlice = HeroSlice;
+type PageDocumentDataSlicesSlice = CarouselSlice | SkyDiveSlice | HeroSlice;
 
 /**
  * Content for Page documents
@@ -77,6 +77,61 @@ export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
 export type AllDocumentTypes = PageDocument;
+
+/**
+ * Primary content in *Carousel → Carousel → Primary*
+ */
+export interface CarouselSliceDefaultPrimary {
+  /**
+   * Heading field in *Carousel → Carousel → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+
+  /**
+   * Price Copy field in *Carousel → Carousel → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel.default.primary.price_copy
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  price_copy: prismic.RichTextField;
+}
+
+/**
+ * Carousel variation for Carousel Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CarouselSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CarouselSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Carousel*
+ */
+type CarouselSliceVariation = CarouselSliceDefault;
+
+/**
+ * Carousel Shared Slice
+ *
+ * - **API ID**: `carousel`
+ * - **Description**: Carousel
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CarouselSlice = prismic.SharedSlice<
+  "carousel",
+  CarouselSliceVariation
+>;
 
 /**
  * Primary content in *Hero → Hero → Primary*
@@ -190,6 +245,65 @@ type HeroSliceVariation = HeroSliceDefault;
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
+/**
+ * Primary content in *SkyDive → SkyDive → Primary*
+ */
+export interface SkyDiveSliceDefaultPrimary {
+  /**
+   * Sentence field in *SkyDive → SkyDive → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: sky_dive.default.primary.sentence
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  sentence: prismic.KeyTextField;
+
+  /**
+   * Flavor field in *SkyDive → SkyDive → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: lemonLime
+   * - **API ID Path**: sky_dive.default.primary.flavor
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  flavor: prismic.SelectField<
+    "lemonLime" | "grape" | "blackCherry" | "strawberryLemonade" | "watermelon",
+    "filled"
+  >;
+}
+
+/**
+ * SkyDive variation for SkyDive Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SkyDiveSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SkyDiveSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SkyDive*
+ */
+type SkyDiveSliceVariation = SkyDiveSliceDefault;
+
+/**
+ * SkyDive Shared Slice
+ *
+ * - **API ID**: `sky_dive`
+ * - **Description**: SkyDive
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SkyDiveSlice = prismic.SharedSlice<
+  "sky_dive",
+  SkyDiveSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -204,10 +318,18 @@ declare module "@prismicio/client" {
       PageDocumentData,
       PageDocumentDataSlicesSlice,
       AllDocumentTypes,
+      CarouselSlice,
+      CarouselSliceDefaultPrimary,
+      CarouselSliceVariation,
+      CarouselSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      SkyDiveSlice,
+      SkyDiveSliceDefaultPrimary,
+      SkyDiveSliceVariation,
+      SkyDiveSliceDefault,
     };
   }
 }
